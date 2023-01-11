@@ -17,7 +17,7 @@ for (int i = 0; i < chosenWords.Length; i++) // puts each typed word into the ar
     chosenWords[i] = Console.ReadLine();
     while (chosenWords[i].Contains(" "))
     {
-        Console.WriteLine("Please enter one word at a time");
+        Console.WriteLine("Please enter one word at a time:");
         chosenWords[i] = Console.ReadLine();
     }
 }
@@ -26,6 +26,12 @@ for (int i = 0; i < chosenWords.Length; i++) // puts each typed word into the ar
 Console.WriteLine("Please enter the letter to count:");
 char desiredChar = Console.ReadKey().KeyChar; // reads the first character typed
 Console.WriteLine(); // space
+while (!Char.IsLetter(desiredChar))
+{
+    Console.WriteLine("Please enter a letter:");
+    desiredChar = Console.ReadKey().KeyChar;
+    Console.WriteLine();
+}
 
 // counting how many times that character is used accross all words in the array
 int charInstances = 0; // how many times the chosen char is used
