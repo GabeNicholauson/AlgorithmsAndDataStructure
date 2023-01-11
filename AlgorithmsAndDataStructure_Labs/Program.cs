@@ -15,6 +15,11 @@ Console.WriteLine("Please enter the words you would like to add to the array:");
 for (int i = 0; i < chosenWords.Length; i++) // puts each typed word into the array
 {
     chosenWords[i] = Console.ReadLine();
+    while (chosenWords[i].Contains(" "))
+    {
+        Console.WriteLine("Please enter one word at a time");
+        chosenWords[i] = Console.ReadLine();
+    }
 }
 
 // choosing the character to count
