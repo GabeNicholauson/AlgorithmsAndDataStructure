@@ -1,6 +1,14 @@
 ﻿// Deciding how big the array should be
-Console.WriteLine("Please enter the length the desired length of the array:");
-string[] chosenWords = new string[Int32.Parse(Console.ReadLine())];
+Console.WriteLine("Please enter the desired length of the array:");
+string[] chosenWords; // tracks all chosen words
+string length = Console.ReadLine(); // reads user input
+
+while (!length.All(char.IsDigit) || length.Length == 0) { // If any character isn't a number or if the user didn't type anything
+    Console.WriteLine("Please enter a whole number"); //retry
+    length = Console.ReadLine();
+}
+
+chosenWords = new string[Int32.Parse(length)]; // create array of desired length
 
 // deciding the words to put into the array
 Console.WriteLine("Please enter the words you would like to add to the array:");
