@@ -12,25 +12,25 @@ chosenWords = new string[Int32.Parse(length)]; // create array of desired length
 
 // deciding the words to put into the array
 Console.WriteLine("Please enter the words you would like to add to the array:");
-for (int i = 0; i < chosenWords.Length; i++)
+for (int i = 0; i < chosenWords.Length; i++) // puts each typed word into the array
 {
     chosenWords[i] = Console.ReadLine();
 }
 
 // choosing the character to count
 Console.WriteLine("Please enter the letter to count:");
-char desiredChar = Console.ReadKey().KeyChar;
-Console.WriteLine();
+char desiredChar = Console.ReadKey().KeyChar; // reads the first character typed
+Console.WriteLine(); // space
 
 // counting how many times that character is used accross all words in the array
-int charInstances = 0;
-int totalChars = 0;
-foreach (string word in chosenWords)
+int charInstances = 0; // how many times the chosen char is used
+int totalChars = 0; // total amount of chars accross all words
+foreach (string word in chosenWords) // goes through each word
 {
     totalChars += word.Length;
-    foreach (char character in word)
+    foreach (char character in word) // goes through each char in a word
     {
-        if (char.ToUpperInvariant(character) == char.ToUpperInvariant(desiredChar))
+        if (char.ToUpper(character) == char.ToUpper(desiredChar)) // convert char to upper case to make program case insensitive
         {
             charInstances++;
         }
@@ -39,7 +39,7 @@ foreach (string word in chosenWords)
 
 // Printing the result
 double percentageAim = 0.25;
-if ((double)charInstances / (double)totalChars >= percentageAim)
+if ((double)charInstances / (double)totalChars >= percentageAim) // if the character shows up equally or more to the percentage aim
 {
     Console.WriteLine("The letter " + desiredChar + " appears " + charInstances + " times in the array." +
                       " This letter makes up more than 25 % of the total number of characters.");
