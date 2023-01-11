@@ -1,4 +1,13 @@
-﻿/**********************************************/
+﻿/*
+ * Lab 1
+ * 
+ * The program will prompt the user for a number. This number determines the amount of words that will be added.
+ * The program will then prompt the user to input that amount of words.
+ * The prograem will then finally ask the user to enter a letter. Tis is the letter that the program will search for in every word. It will
+ * return the amount of times that letter appears and if that letter makes up more than 25% of all letters.
+*/
+
+/**********************************************/
 /**** Deciding how big the array should be ****/
 /**********************************************/
 Console.WriteLine("Please enter the desired length of the array:");
