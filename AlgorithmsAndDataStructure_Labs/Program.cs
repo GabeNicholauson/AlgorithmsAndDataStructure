@@ -7,7 +7,7 @@
 */
 
 using System.Text;
-string example = "San'ta santa is(comin) comin to to town.";
+string example = "San'. santa is{comin'n.} comin to to town.";
 StringBuilder sb = new StringBuilder();
 
 /******************************/
@@ -80,9 +80,7 @@ sb.Clear();
 /**********************/
 /**** Longest Word ****/
 /**********************/
-
-char[] delimiters = new char[] {' ', '.', '?', '!'};
-string[] allWords = example.Split(delimiters);
+string[] allWords = example.Split(' ');
 string longestWord = "";
 
 foreach (string word in allWords)
@@ -90,12 +88,19 @@ foreach (string word in allWords)
     string currentWord = "";
     foreach (char c in word)
     {
-        if (char.IsLetter(c))
+        if (char.IsLetter(c) || c == '\'')
         {
             currentWord += c;
+        } else 
+        {
+            if (currentWord.Length >= longestWord.Length)
+            {
+                longestWord = currentWord;
+            }
+            currentWord = "";
         }
-    }
 
+    }
     if (currentWord.Length >= longestWord.Length)
     {
         longestWord = currentWord;
