@@ -33,3 +33,18 @@ Console.WriteLine(recurringNums);
 /**************************************/
 /**** Combine arrays and sort them ****/
 /**************************************/
+
+/********************************/
+/**** Reverse integer digits ****/
+/********************************/
+
+// The time complexity of this solution is O(n).
+int number = 345;
+string reversedNum = "";
+
+for (int i = number.ToString().Length - 1; i >= 0; i--)
+{
+    reversedNum += number.ToString()[i];
+}
+
+Console.WriteLine(reversedNum);
