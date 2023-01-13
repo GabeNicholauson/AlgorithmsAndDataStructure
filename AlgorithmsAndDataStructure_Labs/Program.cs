@@ -7,7 +7,7 @@
 */
 
 using System.Text;
-string example = "Today I will eat ceareal, watch a movie and shovel my driveway.";
+string example = "hi, hi no bye bye.";
 StringBuilder sb = new StringBuilder();
 
 /******************************/
@@ -26,15 +26,45 @@ foreach(char c in example)
         recurringChars += c;
     }
 }
-sb.Clear();
 
+sb.Clear();
 char[] allDuplicateChars= new char[recurringChars.Length];
+
 for (int i = 0; i < recurringChars.Length; i++)
 {
     allDuplicateChars[i] = recurringChars[i];
 }
+
 Console.WriteLine(String.Join(", ", allDuplicateChars));
 
+/**********************/
+/**** Unique Words ****/
+/**********************/
+string words = "";
+
+for (int i = 0; i < example.Length; i++)
+{
+    if (char.IsLetter(example[i]))
+    {
+        sb.Append(example[i]);
+    } else if (!words.Contains(sb.ToString()))
+    {
+        words += sb.ToString() + " ";
+    } 
+
+    if (words.Contains(sb.ToString()))
+    {
+        sb.Clear();
+    }
+}
+
+if (sb.Length > 0)
+{
+    words += sb.ToString() + " ";
+}
+
+Console.WriteLine(words);
+sb.Clear();
 
 /************************/
 /**** Reverse String ****/
