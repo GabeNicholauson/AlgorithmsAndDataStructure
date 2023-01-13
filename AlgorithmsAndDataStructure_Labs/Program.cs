@@ -6,98 +6,96 @@
  * all unique words, reverse the string and return the longest word.
 */
 
-using System.Text;
-string example = "San'. santa is{comin'n.} comin to to town.";
-StringBuilder sb = new StringBuilder();
+using System.Collections.Immutable;
+
+string example = "San'. santa is{comin'n.} comin to to town"; // String used in each section
 
 /******************************/
 /**** Recurring Characters ****/
 /******************************/
-string recurringChars = "";
+string recurringChars = ""; // Tracks chars that appear more than once
+string chars = ""; // Tracks all unique chars used in the string
 
 foreach(char c in example)
 {
-    string sbString = sb.ToString();
-    if (!sbString.Contains(c))
+    if (!chars.Contains(c)) // if the char is not used yet
     {
-        sb.Append(c);
-    } else if (sbString.Contains(c) && !recurringChars.Contains(c) && char.IsLetter(c))
+        chars += c;
+    } else if (chars.Contains(c) && !recurringChars.Contains(c)) // If that char was used already but not tracked
     {
-        recurringChars += c;
+        recurringChars += c; // It is recurring
     }
 }
-
-sb.Clear();
-char[] allDuplicateChars= new char[recurringChars.Length];
-
-for (int i = 0; i < recurringChars.Length; i++)
-{
-    allDuplicateChars[i] = recurringChars[i];
-}
-
-Console.WriteLine(String.Join(", ", allDuplicateChars));
+char[] allDuplicateChars = recurringChars.ToCharArray(); // Array to store the recurring chars
+Array.Sort(allDuplicateChars);
+Console.WriteLine(String.Join(", ", allDuplicateChars)); // Output array
 
 /**********************/
 /**** Unique Words ****/
 /**********************/
-string words = "";
+string words = ""; // Tracks unique words
+string buildWord = "";
 
 for (int i = 0; i < example.Length; i++)
 {
-    if (char.IsLetter(example[i]) || example[i] == '\'')
+    if (char.IsLetter(example[i]) || example[i] == '\'') // Keeps words with apostrophies intact
     {
-        sb.Append(example[i]);
-    } else if (!words.Contains(sb.ToString()))
+        buildWord += example[i]; // builds the word
+    } else if (!words.Contains(buildWord)) // If that word isn't tracked yet
     {
-        words += sb + " ";
-        sb.Clear();
+        words += buildWord + " ";
+        buildWord = "";
     } else
     {
-        sb.Clear();
+        buildWord = "";
     }
 }
 
-if (sb.Length > 0)
+if (buildWord.Length > 0) // Just in case there isn't any punctuation at the end of the string
 {
-    words += sb + " ";
+    words += buildWord + " ";
 }
 
 Console.WriteLine(words);
-sb.Clear();
 
 /************************/
 /**** Reverse String ****/
 /************************/
+string reversed = "";
 
-for (int i = example.Length - 1; i >= 0; i--)
+for (int i = example.Length - 1; i >= 0; i--) // Goes backwards through the string
 {
-    sb.Append(example[i]);
+    reversed += example[i];
 }
 
-Console.WriteLine(sb.ToString());
-sb.Clear();
+Console.WriteLine(reversed);
 
 /**********************/
 /**** Longest Word ****/
 /**********************/
-string[] allWords = example.Split(' ');
-string longestWord = "";
+string[] allWords = example.Split(' '); // Puts all words into an array
+string longestWord = ""; // Tracks the longest word
 
+/*
+ * I only seperate by spaces incase there is a word with punctuation such as an apostrophy.
+ * I would like to keep those intact and not have an array of delimiters that make up
+ * half my keyboard.
+*/
 foreach (string word in allWords)
 {
-    string currentWord = "";
+    string currentWord = ""; // Tracks my current word. sb didn't work here
     foreach (char c in word)
     {
-        if (char.IsLetter(c) || c == '\'')
+        if (char.IsLetter(c) || c == '\'') // keeps words with spostrophies intact
         {
             currentWord += c;
-        } else 
+        } else // In case there is punctuation between two words.
         {
-            if (currentWord.Length >= longestWord.Length)
+            if (currentWord.Length >= longestWord.Length) // Checks if the word is longer
             {
                 longestWord = currentWord;
             }
-            currentWord = "";
+            currentWord = ""; // resets the current word
         }
 
     }
