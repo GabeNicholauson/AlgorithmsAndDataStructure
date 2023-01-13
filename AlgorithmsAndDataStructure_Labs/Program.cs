@@ -7,7 +7,7 @@
 */
 
 using System.Text;
-string example = "hi, hi no bye bye.";
+string example = "Santa santa my man my";
 StringBuilder sb = new StringBuilder();
 
 /******************************/
@@ -76,3 +76,31 @@ for (int i = example.Length - 1; i >= 0; i--)
 }
 
 Console.WriteLine(sb.ToString());
+sb.Clear();
+
+/**********************/
+/**** Longest Word ****/
+/**********************/
+
+char[] delimiters = new char[] {' ', '.', '?', '!'};
+string[] allWords = example.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
+string longestWord = "";
+
+foreach (string word in allWords)
+{
+    string currentWord = "";
+    foreach (char c in word)
+    {
+        if (char.IsLetter(c))
+        {
+            currentWord += c;
+        }
+    }
+
+    if (currentWord.Length >= longestWord.Length)
+    {
+        longestWord = currentWord;
+    }
+}
+
+Console.WriteLine(longestWord);
