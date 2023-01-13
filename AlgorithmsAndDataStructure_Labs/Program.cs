@@ -7,7 +7,7 @@
 */
 
 using System.Text;
-string example = "Santa santa my man my";
+string example = "San'ta santa is(comin) comin to to town.";
 StringBuilder sb = new StringBuilder();
 
 /******************************/
@@ -44,15 +44,14 @@ string words = "";
 
 for (int i = 0; i < example.Length; i++)
 {
-    if (char.IsLetter(example[i]))
+    if (char.IsLetter(example[i]) || example[i] == '\'')
     {
         sb.Append(example[i]);
     } else if (!words.Contains(sb.ToString()))
     {
-        words += sb.ToString() + " ";
-    } 
-
-    if (words.Contains(sb.ToString()))
+        words += sb + " ";
+        sb.Clear();
+    } else
     {
         sb.Clear();
     }
@@ -60,7 +59,7 @@ for (int i = 0; i < example.Length; i++)
 
 if (sb.Length > 0)
 {
-    words += sb.ToString() + " ";
+    words += sb + " ";
 }
 
 Console.WriteLine(words);
@@ -83,7 +82,7 @@ sb.Clear();
 /**********************/
 
 char[] delimiters = new char[] {' ', '.', '?', '!'};
-string[] allWords = example.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
+string[] allWords = example.Split(delimiters);
 string longestWord = "";
 
 foreach (string word in allWords)
