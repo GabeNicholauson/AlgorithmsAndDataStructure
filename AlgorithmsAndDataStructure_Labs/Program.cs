@@ -14,6 +14,7 @@
 /**********************************/
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 List<List<int>> maxNumberInLists = new()
 {
@@ -40,5 +41,43 @@ foreach (List<int> l in maxNumberInLists)
 
 for (int i = 0; i < allMaxNums.Count; i++)
 {
-    Console.Write($"List {i + 1} has a maximum of {allMaxNums.ElementAt(i)}. ");
+    Console.WriteLine($"List {i + 1} has a maximum of {allMaxNums.ElementAt(i)}. ");
 }
+
+/**************************************/
+/**** Highest int out of all lists ****/
+/**************************************/
+
+List<List<int>> grades = new()
+{
+    new List<int>(){ 85,92, 67, 94, 94 },
+    new List<int>(){ 50, 60, 57, 95 },
+    new List<int>(){ 95 }
+};
+string location = "";
+int highestGrade = 0;
+
+for (int i = 0; i < grades.Count; i++)
+{
+    foreach (int g in grades.ElementAt(i))
+    {
+        if (g > highestGrade)
+        {
+            highestGrade = g;
+            location = (i + 1).ToString();
+        } else if (g == highestGrade && location != (i + 1).ToString())
+        {
+            location += ", " + (i + 1).ToString(); 
+        }
+        {
+
+        }
+    }
+}
+
+Console.WriteLine($"The highest grade is {highestGrade}. This grade was found in class(es) {location}");
+
+
+/*******************************************/
+/**** Order list from least to greatest ****/
+/*******************************************/
