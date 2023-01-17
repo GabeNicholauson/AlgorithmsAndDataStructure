@@ -81,3 +81,19 @@ Console.WriteLine($"The highest grade is {highestGrade}. This grade was found in
 /*******************************************/
 /**** Order list from least to greatest ****/
 /*******************************************/
+List<int> orderThese = new() { 6, -2, 5, 3, 6, 3 ,8, 0 ,9, 76, 4, 1, -6, -7, 3 };
+
+for (int i = 1; i < orderThese.Count; i++)
+{
+    for (int j = i; j > 0; j--)
+    {
+        if (orderThese.ElementAt(j) < orderThese.ElementAt(j - 1))
+        {
+            int save = orderThese.ElementAt(j);
+            orderThese[j] = orderThese[j - 1];
+            orderThese[j - 1] = save;
+        }
+    }
+}
+
+Console.WriteLine(String.Join(", ", orderThese));
