@@ -34,8 +34,8 @@ Console.WriteLine(recurringNums);
 /**** Combine arrays and sort them ****/
 /**************************************/
 
-// It is not possible to merge the arrays and keep them sorted in O(n) time.
-// Combining the arrays and sorting them are both O(n) operations.
+// It is not possible to merge the arrays and sort them in O(n) time.
+// sorting arrays is O(n log n) or O(n^2) time.
 int[] array1 = { 1, 2, 3, 4, 5, 5, 6, 7, 5, 6, 9, 4, 2 };
 int[] array2 = { 2, 5, 7, 9, 13, 9, 9, 13, 2 };
 int[] merge = array1.Concat(array2).ToArray(); // Concat() will combine both arrays
