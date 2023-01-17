@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgorithmsAndDataStructure_Labs", "AlgorithmsAndDataStructure_Labs\AlgorithmsAndDataStructure_Labs.csproj", "{0BED21F9-6A7F-4360-87AB-D9D66B61DCE4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgorithmsAndDataStructure_Lab5", "AlgorithmsAndDataStructure_Labs\AlgorithmsAndDataStructure_Lab5.csproj", "{0BED21F9-6A7F-4360-87AB-D9D66B61DCE4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
