@@ -24,22 +24,20 @@ List<List<int>> maxNumberInLists = new()
     new List<int>(){ 2, 1, 2 }
 };
 
-// The ? after int means that the int is allowed to be null
-List<int?> allMaxNums = new (); //tracks all the max nums
-int? max = null; //null incase there are some really low negative numbers
+List<int> allMaxNums = new (); //tracks all the max nums
+int max = Int32.MinValue; // lowest value possible incase there are really low values
 
 foreach (List<int> l in maxNumberInLists) // goes through each list
 {
     foreach (int num in l) // goes through each int in the current list
     {
-        if (num > max && max != null)
+        if (num > max)
         {
             max = num;
         }
-        else max ??= num; // The ??= operator checks if max is currently null and assigns num if it is
     }
     allMaxNums.Add(max);
-    max = null;
+    max = Int32.MinValue;
 }
 
 for (int i = 0; i < allMaxNums.Count; i++) // Prints the highest numbers in O(n) time
