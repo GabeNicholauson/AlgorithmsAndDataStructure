@@ -77,7 +77,7 @@ for (int i = 0; i < grades.Count; i++) // goes through each list
     }
 }
 
-Console.WriteLine($"The highest grade is {highestGrade}. This grade was found in class(es) {location}");
+Console.WriteLine($"The highest grade is {highestGrade}. This grade was found in class(es): {location}");
 
 /*******************************************/
 /**** Order list from least to greatest ****/
