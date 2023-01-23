@@ -10,13 +10,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 
 Queue<string> songQueue = new Queue<string>();
 Stack<string> previousSongs = new Stack<string>();
+string currentSong = "";
 
-while(true)
+while (true)
 {
-    string userInput = string.Empty;
+    string userInput;
+
     Console.WriteLine
         (
         "Choose an option:\n" +
@@ -24,17 +27,36 @@ while(true)
         "2. Play the next song in your playlist\n" +
         "3. Skip the next song\n" +
         "4. Rewind one song\n" +
-        "5. Exit"
+        "5. Exit\n"
         );
 
-    userInput= Console.ReadLine();
+    userInput = Console.ReadLine();
 
-    if(userInput == "1")
+    switch (userInput)
     {
-        Console.WriteLine("Enter song name")
-        userInput = Console.ReadLine();
-        songQueue.Enqueue(userInput);
-        Console.WriteLine($"\"{userInput}\" added to your playlist")
+        case "1":
+            Console.WriteLine("\nEnter song name:\n");
+            userInput = Console.ReadLine();
+            songQueue.Enqueue(userInput);
+            Console.WriteLine($"\n\"{userInput}\" added to your playlist\n");
+            break;
+        case "2":
+            if (currentSong.Length != 0)
+                previousSongs.Push(currentSong);
+
+            if (songQueue.Count > 0)
+                currentSong = songQueue.Dequeue();
+            else
+                currentSong = "None queued";
+
+            Console.WriteLine($"\nNow playing: {currentSong}\n");
+
+            if (songQueue.Count > 0)
+                Console.WriteLine($"Next song: {songQueue.Peek()}\n");
+            else
+                Console.WriteLine($"Next song: None queued\n");
+            break;
+
     }
     
 }
