@@ -14,9 +14,10 @@ using System.Globalization;
 
 Queue<string> songQueue = new Queue<string>();
 Stack<string> previousSongs = new Stack<string>();
-string currentSong = "";
+string currentSong = "None queued";
+bool open = true;
 
-while (true)
+while (open)
 {
     string userInput;
 
@@ -55,6 +56,42 @@ while (true)
                 Console.WriteLine($"Next song: {songQueue.Peek()}\n");
             else
                 Console.WriteLine($"Next song: None queued\n");
+            break;
+        case "3":
+            if (songQueue.Count > 0)
+                previousSongs.Push(songQueue.Dequeue());
+            else
+            {
+                Console.WriteLine("No song queued");
+                break;
+            }
+                
+            Console.WriteLine($"\nNow playing: {currentSong}\n");
+
+            if (songQueue.Count > 0)
+                Console.WriteLine($"Next song: {songQueue.Peek()}\n");
+            else
+                Console.WriteLine($"Next song: None queued\n");
+            break;
+        case "4":
+            if (previousSongs.Count > 0)
+            {
+                songQueue.Enqueue(currentSong);
+                currentSong = previousSongs.Pop();
+            }
+            else
+            {
+                Console.WriteLine("No previous songs");
+                break;
+            }
+
+            Console.WriteLine($"\nNow playing: {currentSong}\n");
+
+            if (songQueue.Count > 0)
+                Console.WriteLine($"Next song: {songQueue.Peek()}\n");
+            else
+                Console.WriteLine($"Next song: None queued\n");
+
             break;
 
     }
